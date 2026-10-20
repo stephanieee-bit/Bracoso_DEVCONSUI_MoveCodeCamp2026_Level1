@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f4">
+  <meta name="description" content="A focused, simple workspace for organizing your academic schedule and tasks.">
+  <title>Studywell — Academic Organizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-screen" id="login-screen">
+    <section class="login-welcome" aria-labelledby="login-welcome-title">
+      <a class="login-brand" href="#" aria-label="Studywell home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5z"/><path d="m4.5 7.8 7.5 4.3 7.5-4.3M12 12.1V21"/></svg></span>
+        <span>studywell<span class="brand-dot">.</span></span>
+      </a>
+      <div class="login-welcome-copy">
+        <span class="login-eyebrow">YOUR ACADEMIC SPACE</span>
+        <h1 id="login-welcome-title">A little more organized. A lot more at ease.</h1>
+        <p>Bring your classes, deadlines, and next steps together in one calm place.</p>
+      </div>
+      <div class="login-note"><span aria-hidden="true">✳</span><span>One thing at a time. A little progress adds up.</span></div>
+    </section>
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-card">
+        <span class="login-card-kicker">WELCOME BACK</span>
+        <h2 id="login-title">Sign in to Studywell</h2>
+        <p class="login-description">Continue securely with an account you already use.</p>
+        <div class="login-providers">
+          <a class="provider-button" id="google-login" href="/auth/google"><span class="provider-icon google-icon" aria-hidden="true">G</span>Continue with Google</a>
+          <a class="provider-button" id="facebook-login" href="/auth/facebook"><span class="provider-icon facebook-icon" aria-hidden="true">f</span>Continue with Facebook</a>
+        </div>
+        <p class="login-disclaimer" id="login-status" role="status">Sign in with your Google or Facebook account. Your planner data stays in this browser and is not synced to an online account.</p>
+      </div>
+      <span class="login-footer">A focused space for your studies.</span>
+    </section>
+  </main>
+  <div class="app-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard" aria-label="Studywell dashboard">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5z"/><path d="m4.5 7.8 7.5 4.3 7.5-4.3M12 12.1V21"/></svg></span>
+        <span>studywell<span class="brand-dot">.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.5"/><rect x="13.5" y="9.5" width="7" height="11" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span>Dashboard</button>
+        <button class="nav-link" data-page="schedule"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17M7.5 13h3M13.5 13h3M7.5 16.5h3"/></svg></span>Class schedule<span class="nav-count" id="class-nav-count">0</span></button>
+        <button class="nav-link" data-page="tasks"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M8 5h12M8 12h12M8 19h12"/><path d="m3 5 1.3 1.3L6.5 4M3 12l1.3 1.3L6.5 11M3 19l1.3 1.3L6.5 18"/></svg></span>Tasks<span class="nav-count" id="task-nav-count">0</span></button>
+        <button class="nav-link" data-page="calendar"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17M8 13h.01M12 13h.01M16 13h.01M8 16h.01M12 16h.01"/></svg></span>Calendar</button>
+      </nav>
+      <button class="nav-link sign-out-link" id="sign-out" type="button"><span class="nav-icon" aria-hidden="true">↪</span>Sign out</button>
+      <div class="sidebar-bottom">
+        <div class="focus-card">
+          <span class="focus-icon"><svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7m10 10 1.4 1.4m0-12.8L17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="5"/></svg></span>
+          <strong>One thing at a time.</strong>
+          <span>A little progress adds up.</span>
+        </div>
+        <button class="nav-link settings-link" data-page="settings"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.1.9-1.5 2.6-1.4-.5a7.8 7.8 0 0 1-1.4.8l-.3 1.5h-3l-.3-1.5a7.8 7.8 0 0 1-1.4-.8l-1.4.5-1.5-2.6 1.1-.9a7 7 0 0 1 0-1.6l-1.1-.9 1.5-2.6 1.4.5a7.8 7.8 0 0 1 1.4-.8l.3-1.5h3l.3 1.5a7.8 7.8 0 0 1 1.4.8l1.4-.5 1.5 2.6-1.1.9a7 7 0 0 1 0 1.6Z" transform="translate(-.7 -1) scale(.96)"/></svg></span>Settings</button>
+        <div class="profile">
+          <div class="avatar">S</div>
+          <div class="profile-copy"><strong>Student workspace</strong><span>Personal planner</span></div>
+          <span class="profile-more" aria-hidden="true">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="menu-toggle" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="page-crumb">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <span class="today-label" id="today-label"></span>
+          <button class="top-add button-primary" data-action="add-task"><span aria-hidden="true">＋</span> Add a task</button>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row">
+            <div>
+              <div class="eyebrow">YOUR ACADEMIC SPACE</div>
+              <h1 id="welcome-title">A clear mind starts here.</h1>
+              <p class="page-intro">Keep your classes, deadlines, and next steps in one calm place.</p>
+            </div>
+            <span class="demo-pill"><span class="demo-dot"></span> Demo data</span>
+          </div>
+          <div class="demo-note" id="demo-note"><span class="note-spark">✳</span><span><strong>You're viewing sample data.</strong> Edit or remove it anytime; your changes are saved in this browser.</span><button class="note-dismiss" id="dismiss-demo" aria-label="Dismiss sample data message">×</button></div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-head"><span>Classes today</span><span class="stat-icon icon-violet"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17"/></svg></span></div>
+              <div class="stat-value" id="stat-classes">0</div><div class="stat-foot" id="stat-classes-foot">No classes scheduled</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head"><span>Tasks to do</span><span class="stat-icon icon-orange"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span></div>
+              <div class="stat-value" id="stat-tasks">0</div><div class="stat-foot">Across all your courses</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head"><span>Due this week</span><span class="stat-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M12 8v4l2.5 2.5"/><circle cx="12" cy="12" r="8.5"/></svg></span></div>
+              <div class="stat-value" id="stat-week">0</div><div class="stat-foot">Deadlines in the next 7 days</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head"><span>Completed</span><span class="stat-icon icon-green"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span></div>
+              <div class="stat-value" id="stat-completed">0</div><div class="stat-foot">Tasks finished so far</div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel today-panel">
+              <div class="panel-heading"><div><span class="section-kicker">ON YOUR TIMETABLE</span><h2>Today's classes</h2></div><button class="text-link" data-page="schedule">Full schedule <span>→</span></button></div>
+              <div id="today-classes" class="class-list"></div>
+            </section>
+            <section class="panel deadlines-panel">
+              <div class="panel-heading"><div><span class="section-kicker">DON'T MISS A THING</span><h2>Upcoming deadlines</h2></div><button class="text-link" data-page="tasks">All tasks <span>→</span></button></div>
+              <div id="upcoming-tasks" class="upcoming-list"></div>
+            </section>
+          </div>
+          <section class="panel focus-panel">
+            <div class="panel-heading"><div><span class="section-kicker">SMALL STEPS, BIG PROGRESS</span><h2>Your task overview</h2></div><button class="text-link" data-page="tasks">View tasks <span>→</span></button></div>
+            <div class="overview-content"><div class="progress-ring" id="progress-ring"><div><strong id="progress-percent">0%</strong><span>complete</span></div></div><div class="overview-copy"><h3 id="overview-title">You're getting started</h3><p id="overview-copy">Add your first task and make a plan for the week.</p><div class="progress-track"><span id="progress-bar"></span></div><span class="progress-caption" id="progress-caption">0 of 0 tasks completed</span></div><button class="button-secondary overview-button" data-action="add-task">＋ Add your next task</button></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-schedule">
+          <div class="page-heading-row"><div><div class="eyebrow">PLAN YOUR WEEK</div><h1>Class schedule</h1><p class="page-intro">A simple overview of the classes that keep your week moving.</p></div><button class="button-primary" data-action="add-class">＋ Add a class</button></div>
+          <div class="schedule-toolbar"><div class="segmented" id="schedule-days" role="tablist" aria-label="Filter classes by day"></div><span id="schedule-total" class="muted-small"></span></div>
+          <div class="schedule-list" id="schedule-list"></div>
+        </section>
+
+        <section class="page" id="page-tasks">
+          <div class="page-heading-row"><div><div class="eyebrow">STAY ON TOP OF IT</div><h1>Your tasks</h1><p class="page-intro">Everything you need to do, organized by what matters next.</p></div><button class="button-primary" data-action="add-task">＋ Add a task</button></div>
+          <div class="task-toolbar"><div class="filter-tabs" id="task-filters"><button class="filter-tab selected" data-filter="all">All <span id="filter-all-count">0</span></button><button class="filter-tab" data-filter="active">To do <span id="filter-active-count">0</span></button><button class="filter-tab" data-filter="completed">Completed <span id="filter-completed-count">0</span></button></div><label class="select-wrap"><span class="sr-only">Sort tasks</span><select id="task-sort"><option value="date">Due date</option><option value="priority">Priority</option></select></label></div>
+          <div class="task-list" id="task-list"></div>
+        </section>
+
+        <section class="page" id="page-calendar">
+          <div class="page-heading-row"><div><div class="eyebrow">THE MONTH AT A GLANCE</div><h1>Calendar</h1><p class="page-intro">Classes and deadlines together, so nothing sneaks up on you.</p></div><button class="button-primary" data-action="add-task">＋ Add a task</button></div>
+          <section class="panel calendar-panel"><div class="calendar-toolbar"><button class="icon-button calendar-arrow" id="month-prev" aria-label="Previous month">‹</button><h2 id="calendar-month"></h2><button class="icon-button calendar-arrow" id="month-next" aria-label="Next month">›</button><button class="text-link calendar-today" id="month-today">Today</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-legend"><span><i class="legend-dot legend-class"></i>Class</span><span><i class="legend-dot legend-task"></i>Task deadline</span></div></section>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-heading-row"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings</h1><p class="page-intro">A few details to make your planner feel like yours.</p></div></div>
+          <section class="panel settings-panel"><div class="settings-section"><div class="settings-copy"><h2>Study week starts on</h2><p>Choose the first day shown in your weekly class schedule.</p></div><select id="week-start" class="settings-select"><option value="1">Monday</option><option value="0">Sunday</option></select></div><div class="settings-section"><div class="settings-copy"><h2>Sample data</h2><p>Demo classes and tasks help you explore the organizer. Your changes stay in this browser.</p></div><button class="button-secondary" id="restore-sample">Restore sample data</button></div><div class="settings-section"><div class="settings-copy"><h2>Your data</h2><p>Everything is stored locally in this browser. Clearing site data or using another browser will remove or hide it.</p></div><button class="button-danger" id="clear-data">Clear all data</button></div><div class="settings-section reminder-info"><div class="settings-copy"><h2>Reminder preferences</h2><p>Each task can store a reminder preference. This version does not send notifications or alarms.</p></div><span class="local-badge">Stored locally</span></div><p class="settings-status" id="settings-status" role="status"></p></section>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="dialog-heading"><div><span class="section-kicker" id="modal-kicker">YOUR PLANNER</span><h2 id="modal-title">Add a task</h2></div><button class="icon-button dialog-close" id="modal-close" aria-label="Close">×</button></div>
+      <form id="item-form">
+        <div id="task-fields">
+          <label class="form-field">Task name<input name="title" type="text" maxlength="90" placeholder="e.g. Finish research proposal" required></label>
+          <label class="form-field">Course or subject<input name="course" type="text" maxlength="60" placeholder="e.g. Research Methods"></label>
+          <div class="form-row"><label class="form-field">Due date<input name="dueDate" type="date" required></label><label class="form-field">Priority<select name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label></div>
+          <div class="form-row"><label class="form-field">Reminder preference<select name="reminder"><option value="none">No reminder</option><option value="on-day">On the due date</option><option value="1-day">1 day before</option><option value="3-days">3 days before</option></select></label><label class="form-field">Status<select name="completed"><option value="false">To do</option><option value="true">Completed</option></select></label></div>
+          <label class="form-field">Notes <span class="optional-label">Optional</span><textarea name="notes" rows="3" maxlength="300" placeholder="Add a few helpful details..."></textarea></label>
+        </div>
+        <div id="class-fields" hidden>
+          <label class="form-field">Class name<input name="className" type="text" maxlength="80" placeholder="e.g. Human-Computer Interaction" required></label>
+          <label class="form-field">Room or location<input name="room" type="text" maxlength="60" placeholder="e.g. Room 204 or Online"></label>
+          <div class="form-row"><label class="form-field">Day<select name="day"><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option></select></label><label class="form-field">Course code <span class="optional-label">Optional</span><input name="code" type="text" maxlength="24" placeholder="e.g. IT 302"></label></div>
+          <div class="form-row"><label class="form-field">Start time<input name="startTime" type="time" required></label><label class="form-field">End time<input name="endTime" type="time" required></label></div>
+          <label class="form-field">Class color<select name="color"><option value="violet">Violet</option><option value="blue">Blue</option><option value="green">Green</option><option value="orange">Orange</option></select></label>
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <div class="dialog-actions"><button type="button" class="button-secondary" id="form-cancel">Cancel</button><button type="submit" class="button-primary" id="form-submit">Save task</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
